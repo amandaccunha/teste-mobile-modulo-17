@@ -1,0 +1,19 @@
+pipeline{
+  agent any
+
+  stages{
+    stage("configuração"){
+      steps{
+        git branch: 'main', url: 'https://github.com/amandaccunha/teste-mobile-modulo-17.git'
+        sh "npm install"
+      }
+    }
+
+    stage("Teste"){
+      steps{
+        sh "NO_COLOR=1 npm test| true"
+      }
+    }
+  }
+
+}
